@@ -1,21 +1,36 @@
 <template>
-  <div class="div">Hi Vue</div>
+  <div class="main">
+    <h1>Vue</h1>
+    <teleport to=".show-modal">
+      <ModalBox>
+        <template v-slot:body>
+          <div>This is a button</div>
+        </template>
+        <button class="button">Click Me</button>
+      </ModalBox>
+    </teleport>
+  </div>
 </template>
 
 <script>
+import ModalBox from './components/ModalBox.vue'
 
 export default {
   name: 'App',
+  data() {
+    return {
+      isShow: true
+    }
+  },
+  components: {
+    ModalBox
+  }
 }
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+<style scoped>
+.main {
+  padding: 20px;
   text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
 }
 </style>
