@@ -2,7 +2,7 @@
   <div>
     <div id="nav">
       <router-link to="/" class="nav-item">Home</router-link>
-      <router-link to="/about" class="nav-item">About</router-link>
+      <router-link :to="{ name: 'About' }" class="nav-item">About</router-link>
     </div>
     <router-view></router-view>
   </div>
