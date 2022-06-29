@@ -27,4 +27,21 @@ export default {
   display: inline-block;
   padding: 4px;
 }
+
+#nav a.nav-item {
+  width: 200px;
+  border-radius: 100px;
+  background: #c0c0c0;
+  color: white;
+  margin: 8px;
+  text-decoration: none;
+}
+
+#nav a.router-link-active {
+  background: orangered;
+}
+
+#nav a.router-link-exact-active {
+  background: orangered;
+}
 </style>

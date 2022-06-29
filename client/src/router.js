@@ -1,24 +1,29 @@
 import { createRouter, createWebHistory } from 'vue-router';
 
-import Home from './views/Home.vue';
-import News from './views/News.vue';
-import About from './views/About.vue';
-
 const routes = [
   {
     path: '/',
     name: 'Home',
-    component: Home
+    component: () => import('./views/Home.vue')
   },
   {
     path: '/news/:id',
     name: 'News',
-    component: News
+    component: () => import('./views/News.vue')
   },
   {
     path: '/about',
     name: 'About',
-    component: About
+    component: () => import('./views/About.vue')
+  },
+  {
+    path: '/news',
+    redirect: '/'
+  },
+  {
+    path: '/:catchAll(.*)',
+    name: '404',
+    component: () => import('./views/404.vue')
   }
 ];
 

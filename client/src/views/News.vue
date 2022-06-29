@@ -20,7 +20,6 @@ export default {
     }
   },
   mounted() {
-    console.log(this.id);
     if (!this.id) {
       this.$router.push('/')
     }
@@ -29,13 +28,16 @@ export default {
       .then(data => data.json())
       .then(result => {
         this.news = result.data
-        console.log(this.news);
       })
   }
 }
 </script>
 
 <style scoped>
+.content {
+  margin: 0 auto;
+  width: 600px;
+}
 
 .list {
   display: flex;
