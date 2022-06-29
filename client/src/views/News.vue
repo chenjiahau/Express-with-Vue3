@@ -1,12 +1,10 @@
 <template>
   <div>
-    <h1>News List</h1>
+    <h1>News</h1>
     <div class="content">
-      <div class="list" v-for="news in newsList" :key="news.id">
+      <div class="list" v-if="news">
         <div class="id">{{news.id}}</div>
-        <div class="title">
-          <router-link :to="{ name: 'News', params: { id: news.id }}">{{news.title}}</router-link>
-        </div>
+        <div class="title">{{news.title}}</div>
       </div>
     </div>
   </div>
@@ -14,27 +12,31 @@
 
 <script>
 export default {
-  name: 'home-page',
+  name: 'news-page',
   data() {
     return {
-      newsList: []
+      id: this.$route.params.id,
+      news: null
     }
   },
   mounted() {
-    fetch('/list')
+    console.log(this.id);
+    if (!this.id) {
+      this.$router.push('/')
+    }
+
+    fetch('/list/' + this.id)
       .then(data => data.json())
       .then(result => {
-        this.newsList = result.data
+        this.news = result.data
+        console.log(this.news);
       })
   }
 }
 </script>
 
 <style scoped>
-.content {
-  margin: 0 auto;
-  width: 600px;
-}
+
 .list {
   display: flex;
   justify-content: center;
