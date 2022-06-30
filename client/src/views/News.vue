@@ -13,9 +13,9 @@
 <script>
 export default {
   name: 'news-page',
+  props: [ 'id' ],
   data() {
     return {
-      id: this.$route.params.id,
       news: null
     }
   },
