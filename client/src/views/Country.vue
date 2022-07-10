@@ -1,26 +1,33 @@
 <template>
-  <div class="country" v-if="showCountryList">
-    <h1>Country List</h1>
+  <div class="country">
+    <h1>Country</h1>
     <div
       class="country-list"
       v-for="country in countryList"
       :key="country.id"
     >
       <div class="id">{{country.id}}</div>
-      <div class="title">{{country.country}}</div>
+      <div class="title">
+        <a @click="gotoDetail(country)" href="#">{{country.country}}</a>
+      </div>
     </div>
   </div>
 </template>
 <script>
+import { useRouter } from 'vue-router';
 import getCountry from '../composables/getCountry'
 
 export default {
   name: "CountryPage",
-  props: [ 'showCountryList', 'countryList' ],
   setup() {
-    let { page } = getCountry()
-    
-    return { page }
+    const router = useRouter()
+
+    let { page, countryList } = getCountry()
+    let gotoDetail = (country) => {
+      router.push({ name: "CountryDetail", params: { id: country.id } })
+    }
+
+    return { page, countryList, gotoDetail }
   }
 }
 </script>
@@ -29,6 +36,7 @@ export default {
 .country {
   margin: 0 auto;
   width: 600px;
+  text-align: center;
 }
 
 .country-list {
@@ -46,6 +54,7 @@ export default {
   background: #fff;
   margin: 12px;
   border-radius: 15px;
+  text-align: center;
 }
 
 .title {
@@ -56,12 +65,12 @@ export default {
 }
 
 .title > a:link, .title > a:visited {
-  color: #fff;
+  color: rgba(243, 120, 120, 1);
   text-decoration: none;
 }
 
 .title > a:hover {
-  color: #fff;
+  color: rgba(243, 120, 120, 1);
   text-decoration: underline;
 }
 </style>

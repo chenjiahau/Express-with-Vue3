@@ -1,22 +1,20 @@
-import { ref, onMounted, onUnmounted, onUpdated } from 'vue'
+import { ref } from 'vue'
 
 const getCountry = () => {
   let page = ref({ name: 'Country' })
+  let countryList = ref([
+    { "id": 1, "country": "Ukraine", "population": "4413 萬" },
+    { "id": 2, "country": "Brazil", "population": "2.126 億" },
+    { "id": 3, "country": "China", "population": "14.02 億" },
+    { "id": 4, "country": "Palestinian Territory", "population": "4,81 萬" },
+    { "id": 5, "country": "Mexico", "population": "1.289 億" }
+  ])
 
-  onMounted(() => {
-    console.log('Lifecycle onMounted')
-  })
+  const getCountryDetail = (id) => {
+    return countryList.value.filter( country => country.id === id)
+  }
 
-  onUnmounted(() => {
-    // this sample doesn't perform, because router is not yet
-    console.log('Lifecycle onUnmounted')
-  })
-
-  onUpdated(() => {
-    console.log('Lifecycle onUpdated')
-  })
-    
-  return { page }
+  return { page, countryList, getCountryDetail }
 }
 
 export default getCountry
