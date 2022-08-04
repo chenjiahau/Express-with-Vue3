@@ -6,6 +6,9 @@
     </div>
     <router-view></router-view>
   </div>
+  <footer>
+    <router-view name="footer"></router-view>
+  </footer>
 </template>
 
 <script>
@@ -43,5 +46,12 @@ export default {
 
 #nav a.router-link-exact-active {
   background: orangered;
+}
+
+footer {
+  position: fixed;
+  text-align: center;
+  width: 100%;
+  bottom: 0;
 }
 </style>

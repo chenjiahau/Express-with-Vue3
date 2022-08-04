@@ -29,7 +29,7 @@ export default {
       .then(result => {
         this.news = result.data
       })
-  }
+  },
 }
 </script>
 
@@ -37,6 +37,12 @@ export default {
 .content {
   margin: 0 auto;
   width: 600px;
+}
+
+a.link {
+  display: flex;
+  align-items: baseline;
+  text-decoration: none;
 }
 
 .list {

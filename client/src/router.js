@@ -4,18 +4,27 @@ const routes = [
   {
     path: '/',
     name: 'Home',
-    component: () => import('./views/Home.vue')
+    components: {
+      default: () => import('./views/Home.vue'),
+      footer: () => import('./views/UI/FooterBlock.vue')
+    }
   },
   {
     path: '/news/:id',
     name: 'News',
-    component: () => import('./views/News.vue'),
+    components: {
+      default: () => import('./views/News.vue'),
+      footer: () => import('./views/UI/FooterBlock.vue')
+    },
     props: true
   },
   {
     path: '/about',
     name: 'About',
-    component: () => import('./views/About.vue')
+    components: {
+      default: () => import('./views/About.vue'),
+      footer: () => import('./views/UI/FooterBlock.vue')
+    }
   },
   {
     path: '/news',

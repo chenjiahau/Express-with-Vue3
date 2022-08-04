@@ -24,8 +24,21 @@ export default {
     fetch('/list')
       .then(data => data.json())
       .then(result => {
-        this.newsList = result.data
+        this.newsList = result.data;
+        this.redirectToNews();
       })
+  },
+  methods: {
+    redirectToNews() {
+      if (this.$route.query.id && !isNaN(parseInt(this.$route.query.id))) {
+        this.$router.replace({
+          name: 'News',
+          params: {
+            id: parseInt(this.$route.query.id)
+          }
+        });
+      }
+    }
   }
 }
 </script>
