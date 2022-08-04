@@ -7,6 +7,11 @@ const routes = [
     components: {
       default: () => import('./views/Home.vue'),
       footer: () => import('./views/UI/FooterBlock.vue')
+    },
+    beforeEnter(to, from, next) {
+      console.log('route-beforeEnter', to);
+      console.log('route-beforeEnter', from);
+      next();
     }
   },
   {
@@ -40,6 +45,17 @@ const routes = [
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes
+});
+
+router.beforeEach((to, from, next) => {
+  console.log('router-beforeEach', to);
+  console.log('router-beforeEach', from);
+  next();
+});
+
+router.afterEach((to, from) => {
+  console.log('router-afterEach', to);
+  console.log(from);
 });
 
 export default router;

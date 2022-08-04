@@ -39,6 +39,21 @@ export default {
         });
       }
     }
+  },
+  beforeRouteEnter(to, from, next) {
+    console.log('Component-beforeRouteEnter', to);
+    console.log('Component-beforeRouteEnter', from);
+    next();
+  },
+  beforeRouteUpdate(to, from, next) {
+    console.log('Component-beforeRouteUpdate', to);
+    console.log('Component-beforeRouteUpdate', from);
+    next();
+  },
+  beforeRouteLeave(to, from, next) {
+    console.log('Component-beforeRouteLeave', to);
+    console.log('Component-beforeRouteLeave', from);
+    next();
   }
 }
 </script>
